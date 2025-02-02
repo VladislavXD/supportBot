@@ -1,6 +1,7 @@
 from telebot import TeleBot, types
 import uuid
 import os
+from keep_alive import keep_alive
 
 # Инициализация бота с токеном
 bot = TeleBot(os.environ['TOKEN'])
@@ -17,6 +18,7 @@ admin_id = os.environ['ADMIN_ID']
 # Словарь для временного хранения данных
 temp_data = {}
 
+keep_alive()
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(message, 'Здравствуйте отправьте свое сообщение, оно скоро опобликуется на канале.')
